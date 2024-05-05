@@ -1,5 +1,4 @@
 package com.springboot.blog.springbootblogrestapi.security;
-
 import com.springboot.blog.springbootblogrestapi.exception.BlogAPIException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
