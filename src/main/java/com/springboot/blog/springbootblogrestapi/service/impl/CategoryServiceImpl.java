@@ -1,6 +1,7 @@
 package com.springboot.blog.springbootblogrestapi.service.impl;
 
 import com.springboot.blog.springbootblogrestapi.entity.Category;
+import com.springboot.blog.springbootblogrestapi.exception.ResourceNotFoundException;
 import com.springboot.blog.springbootblogrestapi.payload.CategoryDto;
 import com.springboot.blog.springbootblogrestapi.repository.CategoryRepository;
 import com.springboot.blog.springbootblogrestapi.service.CategoryService;
@@ -21,4 +22,14 @@ public class CategoryServiceImpl implements CategoryService {
         Category savedCategory = categoryRepository.save(category);
         return modelMapper.map(savedCategory, CategoryDto.class);
     }
+
+    @Override
+    public CategoryDto getCategoryById(Long categoryId) {
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
+        return modelMapper.map(category, CategoryDto.class);
+
+    }
+
+
 }
