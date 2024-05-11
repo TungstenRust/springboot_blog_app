@@ -22,4 +22,6 @@ public class PostDto {
     // Post content should not be null or empty
     private String content;
     private Set<CommentDto> comments;
+
+    private Long categoryId;
 }
